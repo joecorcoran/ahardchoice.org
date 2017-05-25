@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{ .Site.Title }}</title>
+        <link rel="stylesheet" href="/css/tachyons.min.css">
+        <link rel="stylesheet" href="/css/site.css">
+        <link rel="stylesheet" href="/css/share.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{{ .Description }}">
+    	<meta charset="utf-8">
+        <meta property="og:url"                content="{{ .Permalink }}" />
+	<meta property="og:type"               content="article" />
+	<meta property="og:title"              content="{{ .Title }}" />
+	<meta property="og:description"        content="{{ .Params.description }}" />
+	<meta property="og:image"              content="{{ .Params.mainimg }}" />
+    </head>
+
+    <body class="avenir mb5">
+        <h1 class="f1 tc lh-solid">{{ .Site.Title }}</h1>
+
+        <ul class="list pl0 ml0 center mw6 ba b--light-silver br2">
+        {{ range .Site.Pages }}
+        {{ if not .IsHome }}
+        <li class="ph3 pv3 bb b--light-silver"><a href="{{ .URL }}" class="">{{ .Title }}</a></li>
+        {{ end }}
+        {{ end }}
+        </ul>
+
+        {{ partial "share.html" . }}
+
+        <!--
+            @jeremycorbyn: @theresa_may TURN YOUR LOCATION ON
+        -->
+    </body>
+</html>
