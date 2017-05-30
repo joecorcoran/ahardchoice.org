@@ -18,3 +18,12 @@ a:hover {
 .tory a {
   color: rgb(8, 157, 227);
 }
+
+h1 a {
+  text-decoration: none;
+  color: #555;
+}
+
+h1 a:hover {
+  text-decoration: underline;
+}

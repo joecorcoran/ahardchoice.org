@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{{ .Title }}: {{ .Site.Title }}</title>
+        <title>{{ .Title }}: A hard choice?</title>
         <link rel="stylesheet" href="/css/tachyons.min.css">
         <link rel="stylesheet" href="/css/site.css">
         <link rel="stylesheet" href="/css/share.css">
@@ -13,25 +13,31 @@
 
         <meta property="og:url" content="{{ .Permalink }}" />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="{{ .Title }}" />
+        <meta property="og:title" content="{{ .Title }}: A hard choice?" />
         <meta property="og:description" content="{{ .Params.description }}" />
-        <meta property="og:image" content="{{ .Site.BaseURL }}{{ .Params.mainimg }}" />
+        <meta property="og:image" content="{{ .Site.BaseURL }}/{{ .Params.mainimg }}" />
         <meta property="og:locale" content="en_GB" />
 
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="{{ .Title }}">
+	<meta name="twitter:title" content="{{ .Title }}: A hard choice?">
 	<meta name="twitter:description" content="{{ .Params.description }}">
-	<meta name="twitter:image" content="{{ .Site.BaseURL }}{{ .Params.mainimg }}">
+	<meta name="twitter:image" content="{{ .Site.BaseURL }}/{{ .Params.mainimg }}">
     </head>
 
     <body class="avenir mb5">
-        <h1 class="f1 tc lh-solid">{{ .Title }}: A hard choice?</h1>
+        <h1 class="f1-ns f3 tc lh-solid">
+            <a href="{{ .Prev.URL }}" title="Previously: {{ .Prev.Title }}" class="di-l dn">&#8592;</a>
+            {{ .Title }}: <a href="/" title="Home">A hard choice?</a>
+            {{ if .Next }}<a href="{{ .Next.URL }}" title="Next: {{ .Next.Title }}" class="di-l dn">&#8594;</a>{{ end }}
+
+            <div class="dn-l db tc mt3">
+            <a href="{{ .Prev.URL }}" title="Previously: {{ .Prev.Title }}" class="">&#8592;</a>
+            {{ if .Next }}<a href="{{ .Next.URL }}" title="Next: {{ .Next.Title }}" class="">&#8594;</a>{{ end }}
+            <div>
+        </h1>
 
         {{ .Content }}
         {{ partial "share.html" . }}
-
-        <!--
-            @jeremycorbyn: @theresa_may TURN YOUR LOCATION ON
-        -->
+        {{ partial "ga.html" . }}
     </body>
 </html>

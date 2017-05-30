@@ -11,25 +11,34 @@
         <meta property="og:url"                content="{{ .Permalink }}" />
 	<meta property="og:type"               content="article" />
 	<meta property="og:title"              content="{{ .Title }}" />
-	<meta property="og:description"        content="{{ .Params.description }}" />
-	<meta property="og:image"              content="{{ .Params.mainimg }}" />
+	<meta property="og:description"        content="Comparing the two main parties in the run-up to #GE2017. Is it a hard choice?" />
+        <meta property="og:image"              content="{{ .Site.BaseURL }}/img/may-jc.png" />
+        <meta property="og:locale" content="en_GB" />
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{{ .Title }}">
+	<meta name="twitter:description" content="Comparing the two main parties in the run-up to #GE2017. Is it a hard choice?">
+	<meta name="twitter:image" content="{{ .Site.BaseURL }}/img/may-jc.png">
     </head>
 
     <body class="avenir mb5">
-        <h1 class="f1 tc lh-solid">{{ .Site.Title }}</h1>
+        <h1 class="f1-ns f3 tc lh-solid">{{ .Site.Title }}</h1>
+
+        {{ .Content }}
 
         <ul class="list pl0 ml0 center mw6 ba b--light-silver br2">
         {{ range .Site.Pages }}
         {{ if not .IsHome }}
+        {{ if .Params.wip }}
+        <li class="ph3 pv3 bb b--light-silver">{{ .Title }}</li>
+        {{ else }}
         <li class="ph3 pv3 bb b--light-silver"><a href="{{ .URL }}" class="">{{ .Title }}</a></li>
+        {{ end }}
         {{ end }}
         {{ end }}
         </ul>
 
         {{ partial "share.html" . }}
-
-        <!--
-            @jeremycorbyn: @theresa_may TURN YOUR LOCATION ON
-        -->
+        {{ partial "ga.html" . }}
     </body>
 </html>
